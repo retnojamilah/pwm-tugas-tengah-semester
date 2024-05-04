@@ -152,6 +152,7 @@ body {
 /*About Section atau Tentang Kami, Menu dan Kontak*/
 .about,
 .menu,
+.products,
 .contact {
   padding: 8rem 7% 1.4rem;
 }
@@ -159,6 +160,7 @@ body {
 /*Mengatur Tentang Kami menjadi ditengah halaman */
 .about h2,
 .menu h2,
+.products h2,
 .contact h2 {
   text-align: center;
   font-size: 2.6rem;
@@ -167,6 +169,7 @@ body {
 
 .about h2 span,
 .menu h2 span,
+.products h2 span,
 .contact h2 span {
   color: var(--primary);
 }
@@ -184,7 +187,7 @@ body {
 }
 
 .about .row .content {
-  flex: 1 1 35rem;
+  flex: 1 1 25rem;
   padding: 0 1rem;
 }
 
@@ -214,7 +217,7 @@ body {
 .menu .row {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 5rem;
+  margin-top: 2rem;
   justify-content: center;
 }
 
@@ -225,11 +228,82 @@ body {
 
 .menu .row .menu-card img {
   border-radius: 50%;
-  width: 80%;
+  width: 50%;
 }
 
 .menu .row .menu-card .menu-card-title {
   margin-top: 1rem auto 0.5rem;
+}
+
+/* Products Section*/
+.products .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.products .product-card {
+  /* mengatur kolom untuk produk unggulan*/
+  text-align: center;
+  border: 1px solid #666;
+  padding: 2rem;
+}
+.products .product-icons {
+  /*mengatur warna pada icon*/
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.products .product-icons a {
+  width: 4rem;
+  height: 4rem;
+  color: #fff;
+  margin: 0.3rem;
+  border: 1px solid #666;
+  border-radius: 50%; /*membuat lingkaran pad icon*/
+  display: flex;
+  justify-content: center; /*membuat icon tengak secara horizontal*/
+  align-items: center; /*membuat icon tengak secara vertical*/
+}
+.products .product-icons a:hover {
+  /*penggunaan hover untuk merubah warna pada icon bila kena kursor*/
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.products .product-image {
+  padding: 1rem 0;
+}
+
+.products .product-image img {
+  height: 25rem;
+}
+
+.products .product-content h3 {
+  font-size: 2rem;
+}
+
+.products .product-star {
+  font-size: 1.7rem;
+  padding: 0.8rem;
+  color: var(--primary);
+}
+
+.products .product-star .star-full {
+  /*untuk mengisi warna pada star/ rating*/
+  fill: var(--primary);
+}
+
+.products .product-price {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.products .product-price span {
+  text-decoration: line-through;
+  font-weight: lighter;
+  font-size: 1rem;
 }
 
 /*Contak Section*/
@@ -238,6 +312,7 @@ body {
   margin-top: 2rem;
   background-color: #222;
   padding: 2rem 2rem;
+  width: 100%;
 }
 
 .contact .row .map {
@@ -325,6 +400,72 @@ footer .credit a {
   font-weight: 700;
 }
 
+/*Modal Box*/
+/*item Detail*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.modal-container {
+  position: relative;
+  background-color: #fefefe;
+  color: var(--bg);
+  margin: 15% auto;
+  padding: 1.2rem;
+  border: 2px solid #666;
+  width: 80%;
+  animation: animateModal 0.5s;
+}
+
+/*  Modal animation */
+@keyframes animateModal {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.modal-container .close-icon {
+  position: absolute;
+  right: 1rem;
+}
+.modal-content {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.modal-content img {
+  height: 20rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  margin-top: 1.2rem;
+}
+
+.modal-content a {
+  display: flex;
+  gap: 1rem;
+  width: 12rem;
+  background-color: var(--primary);
+  color: #fff;
+  margin-top: 1rem;
+  padding: 1rem 1.6rem;
+}
+
 /* Responsive layar Media Queries*/
 
 /* Responsive layarLaptop*/
@@ -335,6 +476,10 @@ footer .credit a {
   .container {
     width: 1170px;
   }
+}
+
+.modal-content img {
+  height: 15rem;
 }
 
 /* Responsive layarTablet*/
@@ -412,6 +557,10 @@ footer .credit a {
   }
   .container {
     width: 750px;
+  }
+
+  .modal-content {
+    flex-wrap: wrap;
   }
 }
 
